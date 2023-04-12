@@ -11,12 +11,13 @@ import { Btn } from '../UI/Btn';
 
 const WordsCheck = () => {
   const dispatch = useDispatch();
-  const { openCheck } = useSelector(selectCheck)
+  const { openCheck, rateCheck } = useSelector(selectCheck)
   const { words } = useSelector(selectWords);
 
   React.useEffect(() => {
     const wordsCheck = mixArr(words)
     dispatch(setWordsCheck(wordsCheck))
+    localStorage.setItem('rate', JSON.stringify(rateCheck))
   }, [openCheck]);
 
   const totalRate = getCalcRate();
